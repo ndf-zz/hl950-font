@@ -14,10 +14,17 @@ SRCPROG = './program/hl950.hex'
 DSTHEX = './program/alt_program.hex'
 BASEADDR = 0x1d000000
 
+# FW Ver 1.1.07
 FONTOFT = 0x9984
 FONTLEN = 95 * 61
-LOGOOFT = 0x30018
+LOGOOFT = 0x30018  # 1.1.07
 LOGOLEN = 4 * 32
+
+# FW Ver 1.3.03
+FONTOFT = 0x9984
+FONTLEN = 95 * 61
+LOGOOFT = 0x3345c  # 1.3.03
+LOGOLEN = 4 * 27
 
 
 def ihexline(address, record, buf):
@@ -78,9 +85,10 @@ for j in range(0, FONTLEN):
     PROGMEM[doft] = FONTMAP[j]
 
 # write modified bootlogo to program image
-for j in range(0, LOGOLEN):
-    doft = LOGOOFT + j
-    PROGMEM[doft] = LOGOMAP[j]
+if LOGOOFT is not None:
+    for j in range(0, LOGOLEN):
+        doft = LOGOOFT + j
+        PROGMEM[doft] = LOGOMAP[j]
 
 # write out modified program image
 with open(DSTHEX, 'w') as f:

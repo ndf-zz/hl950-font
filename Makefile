@@ -10,7 +10,6 @@ IPEOPTS = -TPPK4 -P32MX440F512H
 fontpatch: ./program/alt_program.hex
 
 ./program/alt_program.hex: ./program/hl950_program.bin ./font/func_32x15.data ./font/bootlogo.data
-	mkdir -p ./program
 	./scripts/fontpatch.py
 
 .PHONY: fontgen
@@ -35,7 +34,6 @@ logoconv: ./font/bootlogo.data
 devread: ./program/hl950.hex
 
 ./program/hl950.hex:
-	mkdir -p ./program
 	$(IPECMD) $(IPEOPTS) -GFprogram/hl950.hex -OL
 
 ./program/hl950_program.bin: ./program/hl950.hex
@@ -47,5 +45,4 @@ devwrite: ./program/alt_program.hex
 
 .PHONY: clean
 clean:
-	-rm -f ./font/func_32x15.data ./font/bootlogo.data ./font/func_32x15.png ./program/* MPLABXLog.xml
-	-rmdir --ignore-fail-on-non-empty ./program
+	-rm -f ./font/func_32x15.data ./font/bootlogo.data ./font/func_32x15.png MPLABXLog.xml program/hl950_program.bin program/alt_program.hex

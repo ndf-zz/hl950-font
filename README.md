@@ -19,9 +19,8 @@ Scripts to read the firmware, remap the digits, patch the
 firmware and write it back to the device are provided in the
 [scripts](scripts/) folder.
 
-For displays with firmware version 1.1.07, use make:
+To use supplied firmware (version 1.3.03), use make:
 
-	$ make clean
 	$ make devwrite
 
 Otherwise, extract the firmware to program/hl950.hex, and
@@ -30,7 +29,7 @@ check the offsets in fontpatch.py carefully:
 	$ make devread
 
 	FONTOFT = 0x9984
-	LOGOOFT = 0x30018
+	LOGOOFT = 0x3345c
 
 ## Font Map
 
