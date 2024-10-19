@@ -1,7 +1,7 @@
 # hl950-font
 
-This respository contains an updated font for
-mde 5 of the Tag Heuer HL950 Modulo display
+This repository contains an updated font for
+mode 5 of the Tag Heuer HL950 Modulo display
 based on
 [Quicksand Medium](https://fonts.google.com/specimen/Quicksand).
 
@@ -31,17 +31,17 @@ check the offsets in fontpatch.py carefully:
 
 Mode 5 on the display is a 2 column by one row layout
 per module. The original units include a display font that
-can be difficult to read and that does not present well
-from a distance. This font uses a different size for numeric
+can be difficult to read that does not present well
+at a distance. This font uses a different size for numeric
 digits and characters in order to maximise visibility
-a long-distance:
+at long-distance:
 
-![Digits](example_pbm_digits.png "Digits")
+![Digits](font/example_pbm_digits.png "Digits")
 
-Each glyph is packed into 15 columns of 4 bytes,
-with the LSB toward top of display, 
-bytes ordered top to bottom. The first byte indicates
+Each glyph is packed into 15 columns of 4 bytes.
+LSB is toward top of display, 
+bytes are ordered top to bottom. The first byte indicates
 xadvance and is always 16 in this case:
 
-![Packed Digits](example_map_digits.png "Packed Digits")
+![Packed Digits](font/example_map_digits.png "Packed Digits")
 
